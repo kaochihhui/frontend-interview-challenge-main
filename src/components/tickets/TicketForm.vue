@@ -1,12 +1,14 @@
 <template>
   <form @submit.prevent="handleSubmit" class="space-y-4">
     <div>
-      <label class="block text-sm font-medium text-gray-700">Name</label>
+      <label class="block text-sm font-medium text-gray-700">
+        Name <span class="text-red-500">*</span>
+      </label>
       <input 
         v-model="form.name"
         type="text"
         required
-        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+        class="p-1 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
       />
     </div>
 
@@ -14,7 +16,7 @@
       <label class="block text-sm font-medium text-gray-700">Description</label>
       <textarea
         v-model="form.description"
-        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+        class="p-1 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
       ></textarea>
     </div>
 
@@ -29,25 +31,29 @@
     </div>
 
     <div>
-      <label class="block text-sm font-medium text-gray-700">Available Count</label>
+      <label class="block text-sm font-medium text-gray-700">
+        Available Count <span class="text-red-500">*</span>
+      </label>
       <input
         v-model.number="form.count"
         type="number"
         min="0"
         required
-        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+        class="p-1 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
       />
     </div>
 
     <div>
-      <label class="block text-sm font-medium text-gray-700">Price ($)</label>
+      <label class="block text-sm font-medium text-gray-700">
+        Price ($) <span class="text-red-500">*</span>
+      </label>
       <input
         v-model.number="form.price"
         type="number"
         min="0"
         step="0.01"
         required
-        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+        class="p-1 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
       />
     </div>
 
@@ -78,7 +84,6 @@ const form = reactive({
 
 const handleSubmit = () => {
   emit('submit', { ...form })
-  // todo: show a success message
   resetForm()
 }
 

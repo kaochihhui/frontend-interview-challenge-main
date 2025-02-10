@@ -34,6 +34,14 @@ export const useCartStore = defineStore('cart', {
      * @param ticket - Ticket to add to cart
      */
     addItem(ticket: Ticket) {
+      const ticketStore = useTicketStore()
+      const currentTicket = ticketStore.getTicketById(ticket.id)
+      
+      // Check if ticket exists and is available
+      if (!currentTicket || currentTicket.count <= 0) {
+        return
+      }
+
       const existingItem = this.items.find(item => item.id === ticket.id)
       
       if (existingItem) {
@@ -44,6 +52,9 @@ export const useCartStore = defineStore('cart', {
           quantity: 1
         })
       }
+
+      // Decrease available count
+      ticketStore.updateTicketCount(ticket.id, currentTicket.count - 1)
     },
 
     /**
@@ -51,7 +62,18 @@ export const useCartStore = defineStore('cart', {
      * @param id - ID of item to remove
      */
     removeItem(id: string) {
-      this.items = this.items.filter(item => item.id !== id)
+      const ticketStore = useTicketStore()
+      const item = this.items.find(item => item.id === id)
+      
+      if (item) {
+        // Restore ticket count when removing from cart
+        const currentTicket = ticketStore.getTicketById(id)
+        if (currentTicket) {
+          ticketStore.updateTicketCount(id, currentTicket.count + item.quantity)
+        }
+        
+        this.items = this.items.filter(item => item.id !== id)
+      }
     },
 
     /**

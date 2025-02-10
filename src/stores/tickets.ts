@@ -33,6 +33,18 @@ export const useTicketStore = defineStore('tickets', {
      */
     removeTicket(id: string) {
       this.tickets = this.tickets.filter(ticket => ticket.id !== id)
+    },
+
+    /**
+     * Update ticket count
+     * @param id - Ticket ID
+     * @param count - New count value
+     */
+    updateTicketCount(id: string, count: number) {
+      const ticket = this.tickets.find(t => t.id === id)
+      if (ticket) {
+        ticket.count = count
+      }
     }
   },
   getters: {
