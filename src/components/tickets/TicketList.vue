@@ -1,6 +1,7 @@
 <template>
   <div class="space-y-4">
     <div v-for="ticket in sortedTickets" :key="ticket.id" 
+      :data-testid="`ticket-${ticket.id}`"
       class="flex justify-between items-start p-4 border rounded gap-4"
     >
       <div class="flex-1 min-w-0">
