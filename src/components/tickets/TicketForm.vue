@@ -22,9 +22,10 @@
       <input
         v-model="form.isVIP"
         type="checkbox"
+        id="isVIP"
         class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
       />
-      <label class="ml-2 block text-sm text-gray-900">VIP Ticket</label>
+      <label class="ml-2 block text-sm text-gray-900" for="isVIP">VIP Ticket</label>
     </div>
 
     <div>
@@ -52,7 +53,7 @@
 
     <button
       type="submit"
-      class="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition"
+      class="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition cursor-pointer"
     >
       Create Ticket
     </button>

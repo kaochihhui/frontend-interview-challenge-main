@@ -35,5 +35,10 @@ export const useTicketStore = defineStore('tickets', {
       this.tickets = this.tickets.filter(ticket => ticket.id !== id)
     }
   },
+  getters: {
+    getTicketById: (state) => {
+      return (id: string) => state.tickets.find(ticket => ticket.id === id)
+    }
+  },
   persist: true
 })

@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { useTicketStore } from './tickets'
 import type { CartItem, Ticket } from '@/types/ticket'
 
 /**
@@ -51,6 +52,15 @@ export const useCartStore = defineStore('cart', {
      */
     removeItem(id: string) {
       this.items = this.items.filter(item => item.id !== id)
+    },
+
+    /**
+     * Synchronize cart with available tickets
+     * Removes cart items that no longer exist in the ticket store
+     */
+    syncWithAvailableTickets() {
+      const ticketStore = useTicketStore()
+      this.items = this.items.filter(item => ticketStore.getTicketById(item.id))
     }
   },
   persist: true

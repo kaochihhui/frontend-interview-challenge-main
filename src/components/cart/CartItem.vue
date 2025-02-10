@@ -11,15 +11,17 @@
       <span class="font-bold">${{ item.quantity * item.price }}</span>
       <button
         @click="$emit('remove')"
-        class="text-red-500 hover:text-red-700"
+        class="text-red-500 hover:text-red-700 p-1 rounded-full hover:bg-red-50 cursor-pointer"
+        title="Remove from cart"
       >
-        Remove
+        <TrashIcon class="h-5 w-5" />
       </button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { TrashIcon } from '@heroicons/vue/24/outline'
 import type { CartItem } from '@/types/ticket'
 
 defineProps<{
