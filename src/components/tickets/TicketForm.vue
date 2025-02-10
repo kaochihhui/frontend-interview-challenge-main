@@ -87,7 +87,6 @@ const handleSubmit = () => {
   resetForm()
 }
 
-// Reset form
 const resetForm = () => {
   form.name = ''
   form.description = ''

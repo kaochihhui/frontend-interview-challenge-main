@@ -46,8 +46,8 @@ const sortedTickets = computed(() => {
     // Sort VIP tickets first
     if (a.isVIP && !b.isVIP) return -1
     if (!a.isVIP && b.isVIP) return 1
-    // Then sort by name
-    return a.name.localeCompare(b.name)
+    // Then sort by ID in descending order (newest first)
+    return b.id.localeCompare(a.id)
   })
 })
 

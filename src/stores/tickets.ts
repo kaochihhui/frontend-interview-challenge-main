@@ -14,12 +14,11 @@ export const useTicketStore = defineStore('tickets', {
     /**
      * Add a new ticket to the store
      * @param ticket - Ticket data without ID
-     * Generates a unique ID using crypto.randomUUID or fallback method
+     * Generates a unique ID using a timestamp
      */
     addTicket(ticket: Omit<Ticket, 'id'>) {
-      // Generate unique ID with fallback for older browsers
-      const id = crypto.randomUUID?.() || 
-        Math.random().toString(36).substring(2) + Date.now().toString(36)
+      // Generate ID using timestamp
+      const id = Date.now().toString()
       
       this.tickets.push({
         ...ticket,
