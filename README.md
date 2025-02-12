@@ -1,64 +1,106 @@
-# Getting Started
+# Vue 3 Ticket Management System
 
-Download the project, please do not fork the project.
+A modern ticket management application built with Vue 3, TypeScript, and Vite. This application provides a complete solution for managing ticket sales with features like VIP tickets, inventory tracking, and shopping cart functionality.
 
-Make sure you have latest node.js installed on your machine.
+## 🚀 Features
 
-Run the following commands in the project directory:
+### Core Features
+- ✨ Create and manage tickets with detailed information
+- 🌟 VIP ticket support with distinct styling
+- 🔄 Smart sorting: VIP tickets first, then by newest
+- 🛒 Shopping cart with real-time inventory sync
+- 📱 Fully responsive design
+- 💾 Persistent storage using localStorage
 
-```npm install```
+### Technical Features
+- ⚡ Built with Vue 3 + TypeScript + Vite
+- 🎯 State management using Pinia
+- 🔄 Vue Router for navigation
+- 🎨 Styled with Tailwind CSS
+- ✅ Form validation and error handling
+- 🧪 Unit tests using Vitest
 
-```npm run dev```
+## 🛠️ Technology Stack
 
-# Vue 3 + TypeScript + Vite
+- **Frontend Framework**: Vue 3
+- **Language**: TypeScript
+- **Build Tool**: Vite
+- **State Management**: Pinia
+- **Styling**: Tailwind CSS
+- **Testing**: Vitest + Vue Test Utils
+- **Icons**: Heroicons
+- **Storage**: Pinia Persisted State
 
-Develop a Vue.js web application that simulates website for selling tickets. The application will have three main pages: an admin page for creating tickets and a home page to display them. The challenge will assess your proficiency in Vue.js, state management, component design, and Typescript.
+## 📋 Prerequisites
 
-The application should be responsive and function properly on modern web browsers.
+- Node.js (version 16 or higher)
+- npm
 
-Tailwind CSS is included in the project. You may use it to style your application or use CSS framework or UI library of your choice.
+## 🚥 Getting Started
 
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd frontend-interview-challenge-main
+```
 
-# Core Pages:
+2. Install dependencies:
+```bash
+npm install
+```
 
-## Admin Page (/admin):
+3. Run development server:
+```bash
+npm run dev
+```
 
-This is the page where tickets are created.
+4. Run tests:
+```bash
+npm test
+```
 
-Create an interface with input fields to add new event ticket items. Fields should include: Ticket Name, Description, IsVIP (checkbox), Count (number of tickets available), and Price.
-Implement a submission form that adds the ticket data to a centralized store upon submission.
-Show a list of all created tickets. Each ticket should have a button to delete the ticket from the store.
+## 📱 Pages
 
-## Index Page (Home Page):
+### Home Page (/)
+- Display all available tickets
+- Smart sorting system:
+  - VIP tickets displayed first
+  - Within each category (VIP/Regular), sorted by newest first
+- VIP tickets highlighted with amber styling
+- Real-time inventory tracking
+- Add to cart functionality
 
-This is the page where tickets are displayed and can be added to shopping cart.
+### Admin Page (/admin)
+- Create new tickets with validation
+- Manage existing tickets
+- Display all available tickets with the same sorting system
+- Delete tickets with confirmation
+- Set VIP status and inventory
 
-Display a list of all created tickets. 
-VIP tickets should be visually distinguishable from regular tickets (e.g., different color, badge, etc.).
-Add a button to each ticket to add the ticket to a shopping cart.
+### Cart Page (/cart)
+- View cart items
+- See total price
+- Remove items with confirmation
+- Real-time sync with inventory
 
-## Shopping Cart (/cart):
-Create a shopping cart that displays all tickets that have been added to the cart.
+## 🧪 Testing
 
-Note: The shopping cart does not need to persist on page reload. Shopping cart doesn't need to include checkout functionality.
+The project includes comprehensive unit tests for:
+- Store functionality
+- Component rendering
+- User interactions
+- Form validation
 
+Run tests with:
+```bash
+npm test                 # Run tests in watch mode
+npm run test:coverage    # Generate coverage report
+```
 
-# Functionality:
+## 🤝 Contributing
 
-State Management: Use Vue's reactivity system, Pinia, Vuex, or the Composition API for managing the application state.
-Data Handling: Implement mock data handling. Data does not need to persist on page reload unless you choose to implement local storage or a backend service.
-Routing: Use Vue Router to navigate between the Admin and Index pages.
+Contributions are welcome! Please read our contributing guidelines before submitting pull requests.
 
+## 📄 License
 
-# Code Quality and Standards:
-Write clean, well-structured, and commented code.
-Follow best practices for Vue.js and Typescript.
-
-
-# Bonus Points:
-Testing (Optional, but recommended): Write basic unit tests for key components.
-
-
-# Submission:
-
-Please submit your code in a public GitHub repository and send us the link. Include a README.md file with instructions on how to run the application.
+This project is licensed under the MIT License.
