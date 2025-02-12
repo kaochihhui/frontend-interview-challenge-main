@@ -10,7 +10,7 @@
     <div class="flex items-center space-x-4">
       <span class="font-bold">${{ item.quantity * item.price }}</span>
       <button
-        @click="$emit('remove')"
+        @click="confirmRemove"
         class="text-red-500 hover:text-red-700 p-1 rounded-full hover:bg-red-50 cursor-pointer"
         title="Remove from cart"
       >
@@ -24,11 +24,17 @@
 import { TrashIcon } from '@heroicons/vue/24/outline'
 import type { CartItem } from '@/types/ticket'
 
-defineProps<{
+const props = defineProps<{
   item: CartItem
 }>()
 
-defineEmits<{
+const emit = defineEmits<{
   (e: 'remove'): void
 }>()
+
+const confirmRemove = () => {
+  if (window.confirm(`Are you sure you want to remove ticket "${props.item.name}" from cart?`)) {
+    emit('remove')
+  }
+}
 </script>

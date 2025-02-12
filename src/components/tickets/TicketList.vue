@@ -22,7 +22,7 @@
         <p class="text-sm text-gray-500 mt-1">${{ ticket.price }} - {{ ticket.count }} available</p>
       </div>
       <button 
-        @click="$emit('delete', ticket.id)"
+        @click="confirmDelete(ticket)"
         class="text-red-500 hover:text-red-700 p-1 rounded-full hover:bg-red-50 cursor-pointer"
         title="Delete ticket"
       >
@@ -41,6 +41,10 @@ const props = defineProps<{
   tickets: Ticket[]
 }>()
 
+const emit = defineEmits<{
+  (e: 'delete', id: string): void
+}>()
+
 const sortedTickets = computed(() => {
   return [...props.tickets].sort((a, b) => {
     // Sort VIP tickets first
@@ -51,7 +55,9 @@ const sortedTickets = computed(() => {
   })
 })
 
-defineEmits<{
-  (e: 'delete', id: string): void
-}>()
+const confirmDelete = (ticket: Ticket) => {
+  if (window.confirm(`Are you sure you want to delete ticket "${ticket.name}"?`)) {
+    emit('delete', ticket.id)
+  }
+}
 </script>
