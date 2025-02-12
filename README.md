@@ -40,7 +40,7 @@ A modern ticket management application built with Vue 3, TypeScript, and Vite. T
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/kaochihhui/frontend-interview-challenge-main.git
 cd frontend-interview-challenge-main
 ```
 
@@ -83,24 +83,3 @@ npm test
 - Remove items with confirmation
 - Real-time sync with inventory
 
-## 🧪 Testing
-
-The project includes comprehensive unit tests for:
-- Store functionality
-- Component rendering
-- User interactions
-- Form validation
-
-Run tests with:
-```bash
-npm test                 # Run tests in watch mode
-npm run test:coverage    # Generate coverage report
-```
-
-## 🤝 Contributing
-
-Contributions are welcome! Please read our contributing guidelines before submitting pull requests.
-
-## 📄 License
-
-This project is licensed under the MIT License.
