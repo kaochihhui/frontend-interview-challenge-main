@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="handleSubmit" class="space-y-4">
+  <form @submit.prevent="validateAndSubmit" class="space-y-4" novalidate>
     <div>
       <label class="block text-sm font-medium text-gray-700">
         Name <span class="text-red-500">*</span>
@@ -8,8 +8,15 @@
         v-model="form.name"
         type="text"
         required
-        class="p-1 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+        class="p-1 mt-1 block w-full rounded-md shadow-sm focus:ring-blue-500"
+        :class="{
+          'border-gray-300 focus:border-blue-500': !errors.name,
+          'border-red-500 focus:border-red-500': errors.name
+        }"
       />
+      <p v-if="errors.name" class="mt-1 text-sm text-red-500">
+        {{ errors.name }}
+      </p>
     </div>
 
     <div>
@@ -37,10 +44,18 @@
       <input
         v-model.number="form.count"
         type="number"
-        min="0"
+        min="1"
+        step="1"
         required
-        class="p-1 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+        class="p-1 mt-1 block w-full rounded-md shadow-sm focus:ring-blue-500"
+        :class="{
+          'border-gray-300 focus:border-blue-500': !errors.count,
+          'border-red-500 focus:border-red-500': errors.count
+        }"
       />
+      <p v-if="errors.count" class="mt-1 text-sm text-red-500">
+        {{ errors.count }}
+      </p>
     </div>
 
     <div>
@@ -78,20 +93,62 @@ const form = reactive({
   name: '',
   description: '',
   isVIP: false,
-  count: 0,
-  price: 0
+  count: 1,
+  price: 0.01
 })
 
-const handleSubmit = () => {
-  emit('submit', { ...form })
-  resetForm()
+const errors = reactive({
+  name: '',
+  count: '',
+  price: ''
+})
+
+const validateForm = (): boolean => {
+  let isValid = true
+  // Reset all errors
+  errors.name = ''
+  errors.count = ''
+  errors.price = ''
+
+  // Validate name
+  if (!form.name.trim()) {
+    errors.name = 'Name is required'
+    isValid = false
+  }
+
+  // Validate count - check for decimals and non-positive numbers
+  const countStr = form.count.toString()
+  if (!form.count || 
+      form.count <= 0 || 
+      countStr.includes('.') || 
+      countStr.includes('e') || // Prevent scientific notation
+      !Number.isInteger(form.count)
+  ) {
+    errors.count = 'Available count must be a whole number greater than 0'
+    isValid = false
+  }
+
+  // Validate price
+  if (!form.price || form.price <= 0) {
+    errors.price = 'Price must be greater than 0'
+    isValid = false
+  }
+
+  return isValid
+}
+
+const validateAndSubmit = () => {
+  if (validateForm()) {
+    emit('submit', { ...form })
+    resetForm()
+  }
 }
 
 const resetForm = () => {
   form.name = ''
   form.description = ''
   form.isVIP = false
-  form.count = 0
-  form.price = 0
+  form.count = 1
+  form.price = 0.01
 }
 </script>
