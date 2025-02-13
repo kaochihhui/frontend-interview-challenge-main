@@ -54,7 +54,17 @@ npm install
 npm run dev
 ```
 
-4. Run tests:
+4. Build for production:
+```bash
+npm run build
+```
+
+The build output will be in the `dist` directory. You can preview the production build locally:
+```bash
+npm run preview
+```
+
+5. Run tests:
 ```bash
 npm test
 ```
