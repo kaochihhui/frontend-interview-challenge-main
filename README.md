@@ -36,6 +36,10 @@ A modern ticket management application built with Vue 3, TypeScript, and Vite. T
 - Node.js (version 22)
 - npm
 
+## ⚠️ Known Issues
+
+- **Development Mode Styling**: Due to a [known issue with Tailwind CSS v4](https://github.com/tailwindlabs/tailwindcss/discussions/16399), styles might not be applied correctly on first load in development mode. This issue does not affect production builds.
+
 ## 🚥 Getting Started
 
 1. Clone the repository:
@@ -49,22 +53,18 @@ cd frontend-interview-challenge-main
 npm install
 ```
 
-3. Run development server:
+3. For the best experience, use the production build:
+```bash
+npm run build
+npm run preview
+```
+
+Alternatively, you can use development mode (note: initial styles might not load correctly):
 ```bash
 npm run dev
 ```
 
-4. Build for production:
-```bash
-npm run build
-```
-
-The build output will be in the `dist` directory. You can preview the production build locally:
-```bash
-npm run preview
-```
-
-5. Run tests:
+4. Run tests:
 ```bash
 npm test
 ```
