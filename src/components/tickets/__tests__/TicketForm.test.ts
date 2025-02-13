@@ -70,7 +70,7 @@ describe('TicketForm', () => {
     await wrapper.find('form').trigger('submit')
     
     // Check form and errors are reset
-    expect(wrapper.find('input[type="text"]').element.value).toBe('')
+    expect((wrapper.find('input[type="text"]').element as HTMLInputElement).value).toBe('')
     expect(wrapper.text()).not.toContain('Name is required')
   })
 })
