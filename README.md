@@ -33,7 +33,7 @@ A modern ticket management application built with Vue 3, TypeScript, and Vite. T
 
 ## 📋 Prerequisites
 
-- Node.js (version 16 or higher)
+- Node.js (version 22)
 - npm
 
 ## 🚥 Getting Started
